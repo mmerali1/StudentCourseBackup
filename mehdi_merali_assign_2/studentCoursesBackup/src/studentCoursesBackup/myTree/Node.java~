@@ -1,0 +1,14 @@
+
+public class Node{
+
+    private bNumber;
+    List<String> courseNamesList = new ArrayList<String>();
+    
+    
+    public Node(){}
+
+    
+
+
+
+}

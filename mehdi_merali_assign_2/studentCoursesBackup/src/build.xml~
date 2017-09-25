@@ -1,0 +1,7 @@
+<project name="studentCoursesBackup" default="compile_all" basedir="..">
+
+  <property name="BUILD.compiler"   value="modern"/>
+  <property name = "src"            value="src"/>
+  <property name = "BUILD"          value= "src/BUILD" />
+  <property name = "classes"        value="$(BUILD)classes"/>
+  
