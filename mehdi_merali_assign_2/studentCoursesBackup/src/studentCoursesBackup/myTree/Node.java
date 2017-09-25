@@ -1,26 +1,26 @@
+package studentCoursesBackup;
+
+import java.util.ArrayList;
 
 public class Node{
 
     private int  bNumber;
-    List<String> courseNamesList = new ArrayList<String>();
+    ArrayList<String> courseNamesList = new ArrayList<String>();
     
     public Node(){
-	bNumber = -1;
+		bNumber = -1;
     }
 
     public Node(int bNumberIn){
-	bNumber = bNumberIn;
+		bNumber = bNumberIn;
     }
 
     public int getBNumber(){
-	return bNumber;
+		return bNumber;
     }
 
-    public void addCourse(String courseNameIn){
-	courseNamesList.add(courseNameIn);
-    }
+   public void insert_node(){}
+   public void search_node(){}
+   public void delete_node(){}
     
-
-
-
 }
