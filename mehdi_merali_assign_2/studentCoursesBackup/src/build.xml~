@@ -3,12 +3,12 @@
   <property name="BUILD.compiler"   value="modern"/>
   <property name = "src"            value="src"/>
   <property name = "BUILD"          value= "src/BUILD" />
-  <property name = "classes"        value="${BUILD}classes"/>
+  <property name = "classes"        value="${BUILD}/classes"/>
 
 
   <target name = "all"    depends="compile_all"/>
 
-  <target name="compile_all"    depends="Driver"/>
+  <target name="compile_all"    depends="studentCoursesBackup"/>
 
   <target name="clean">
     <delete dir="${BUILD}"/>
@@ -41,7 +41,7 @@
   </target>
 
   <target name="run" depends="jar">
-    <java jar ="${BUILD}/jar/studentCoursesBackup" fork="true">
+    <java jar ="${BUILD}/jar/studentCoursesBackup.jar" fork="true">
       <arg value="${arg0}"/>
       <arg value="${arg1}"/>
       <arg value="${arg2}"/>
