@@ -6,9 +6,14 @@ public class Node{
 
     private int  bNumber;
     ArrayList<String> courseNamesList = new ArrayList<String>();
-    
+    Node left, right;
+	Node observerList[2];
+
     public Node(){
 		bNumber = -1;
+		left = null;
+		right = null;
+		observerList[0] = observerList[1] = null;
     }
 
     public Node(int bNumberIn){
@@ -19,8 +24,5 @@ public class Node{
 		return bNumber;
     }
 
-   public void insert_node(){}
-   public void search_node(){}
-   public void delete_node(){}
     
 }
