@@ -8,7 +8,7 @@ public class Driver{
 
 
     public static void main(String[] args){
-    		 ArrayList<String> s = new ArrayList<String>();
+    		 /*ArrayList<String> s = new ArrayList<String>();
     		 s.add("S");
     		 s.add("T");
 		    TreeBuilder tree = new TreeBuilder();
@@ -24,7 +24,25 @@ public class Driver{
     		 tree.print_tree();
     		 tree.insert(301, s);
     		 System.out.println("NM");
-    		 tree.print_tree();
+    		 tree.print_tree();*/
+	
+		if (args.length != 5){
+			System.err.println("Invalid number of arguments");
+		} else {
+			try{
+				FileProcessor fileIn = new FileProcessor(args[0]);
+			} catch(FileNotFoundException e){
+				System.err.println("File does not exist");
+			}
+			
+			while (fileIn.readline() != "-1"){
+				
+			}
+
+
+		}
+
+
     }
 
 
