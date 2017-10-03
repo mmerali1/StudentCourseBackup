@@ -1,1 +1,13 @@
-package studentCoursesBackup;
+package studentCoursesBackup.myTree;
+
+public interface ObserverI{
+
+
+
+
+
+
+
+
+
+}

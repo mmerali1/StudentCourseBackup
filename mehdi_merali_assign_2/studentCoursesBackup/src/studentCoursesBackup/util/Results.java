@@ -1,12 +1,12 @@
 //FILENAME: Results.java
 //Author: Mehdi Merali, 2017
 
-package studentCoursesBackup;
+package studentCoursesBackup.util;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.NullPointerException;
+//import java.lang.NullPointerException;
 import java.io.File;
 
 

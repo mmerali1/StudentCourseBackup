@@ -1,0 +1,24 @@
+package studentCoursesBackup;
+
+import java.util.ArrayList;
+
+public class Driver{
+
+
+    public static void main(String[] args){
+    		 ArrayList<String> s = new ArrayList<String>();
+    		 s.add("S");
+    		 s.add("T");
+		    TreeBuilder tree = new TreeBuilder();
+		    tree.insert(1000, s);
+			 tree.insert(1002, s);
+			 tree.insert(999, s);
+			 tree.insert(1001, s);
+			 tree.insert(300, s);
+			 tree.print_tree();
+			 tree.delete(999);    
+    
+    }
+
+
+}

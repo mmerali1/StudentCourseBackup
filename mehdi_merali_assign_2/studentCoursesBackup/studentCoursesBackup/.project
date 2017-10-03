@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>studentCoursesBackup</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>classes</name>
+			<type>2</type>
+			<location>/import/linux/home1/mmerali1/designpatterns/prg2/mehdi_merali_assign_2/studentCoursesBackup/src/BUILD/classes</location>
+		</link>
+		<link>
+			<name>src</name>
+			<type>2</type>
+			<location>/import/linux/home1/mmerali1/designpatterns/prg2/mehdi_merali_assign_2/studentCoursesBackup/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>

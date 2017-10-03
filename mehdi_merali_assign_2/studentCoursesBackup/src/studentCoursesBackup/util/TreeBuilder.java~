@@ -1,8 +1,10 @@
-package studentCoursesBackup;
+package studentCoursesBackup.util;
 
 //adapted from http://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
 //used link for insert and search, delete was written by myself
 import java.util.ArrayList;
+
+import studentCoursesBackup.myTree.Node;
 public class TreeBuilder{
 
 	Node root;
@@ -12,23 +14,34 @@ public class TreeBuilder{
 	}
 
 	public void insert(int bNumIn, ArrayList<String> clsListIn){
-		root = insert_recursive(root, bNumIn, clsListIn);	
+		root = insert_recursive(root, bNumIn, clsListIn);
+		try{
+			root.observerList[0] = (Node)root.clone();
+			root.observerList[1] = (Node)root.clone();
+		} catch (CloneNotSupportedException e){
+			System.err.println("Node could not be cloned. Clone() failed");
+		}
 	}
 	
 	public Node insert_recursive(Node rootIn, int bNumIn, ArrayList<String> clsListIn){
-		if (root == null){
-			root = new Node(bNumIn, clsListIn);		
-			return root;
-		}
+		if (rootIn == null){
+			rootIn = new Node(bNumIn, clsListIn);		
+			return rootIn;
+		}/*
+		NEED TO FIX INSERT FOR DELETED NODES
+		if (rootIn.getBNumber() == -1){
+			rootIn = new Node(bNumIn, clsListIn);		
+			return rootIn;		
+		}*/
 		
-		if (bNumIn < root.getBNumber()){
-			root.left = insert_recursive(root.left, bNumIn, clsListIn);		
+		if (bNumIn < rootIn.getBNumber()){
+			rootIn.left = insert_recursive(rootIn.left, bNumIn, clsListIn);		
 		}
-		else if(bNumIn > root.getBNumber()){
-			root.right = insert_recursive(root.right, bNumIn, clsListIn);		
+		if(bNumIn > rootIn.getBNumber()){
+			rootIn.right = insert_recursive(rootIn.right, bNumIn, clsListIn);		
 		}
 		//ADD CASE FOR DUPLICATE B-Numbers HERE
-		return root;
+		return rootIn;
 	}
 
 	public Node search(Node rootIn, int bNumIn){
@@ -54,12 +67,13 @@ public class TreeBuilder{
 	}
 
 	public void print_tree_rec(Node rootIn){
+	   System.out.println("Node:\t" + rootIn.getBNumber() + '\t' + rootIn.get_course_list());
 		if (rootIn.left != null){
-			print_tree(rootIn.left);		
+			print_tree_rec(rootIn.left);		
 		}
-		System.out.println("Node:\t" + rootIn.getBNumber() + rootIn.get_course_list());
+
 		if (rootIn.right!= null){
-			print_tree(rootIn.right);		
+			print_tree_rec(rootIn.right);		
 		}		
 	}
 	

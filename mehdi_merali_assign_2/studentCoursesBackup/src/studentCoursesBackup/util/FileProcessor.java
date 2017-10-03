@@ -1,7 +1,7 @@
 //FILENAME: FileProcessor.java
 //Author: Mehdi Merali, 2017
 
-package studentCoursesBackup;
+package studentCoursesBackup.util;
 
 
 import java.io.File;
