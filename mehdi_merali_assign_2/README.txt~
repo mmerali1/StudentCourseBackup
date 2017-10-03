@@ -17,7 +17,7 @@ ant -buildfile src/build.xml run -Darg0=test2_input.txt -Darg1=test5_input.txt -
 -----------------------------------------------------------------------
 
 ## To create tarball for submission
-ant -buildfile src/build.xml tarzip or tar -zcvf mehdi_merali_assign_1.tar.gz mehdi_merali_assign_1
+ant -buildfile src/build.xml tarzip or tar -zcvf mehdi_merali_assign_2.tar.gz mehdi_merali_assign_2
 
 -----------------------------------------------------------------------
 
@@ -30,15 +30,12 @@ grade of 0 for the involved assignment for my first offense and that I
 will receive a grade of F for the course for any additional
 offense.”
 
-[Date: 09/15/2017]	Mehdi Merali
+[Date: 10/2/2017]	Mehdi Merali
 
 -----------------------------------------------------------------------
 
 Provide justification for Data Structures used in this assignment in
 term of Big O complexity (time and/or space)
-
--Main data structure used in MyArrayList was an Array which has O(n).
--The data stucture in Results is also a 1D array. It also has O(n) time complexity. 
 
 
 -----------------------------------------------------------------------

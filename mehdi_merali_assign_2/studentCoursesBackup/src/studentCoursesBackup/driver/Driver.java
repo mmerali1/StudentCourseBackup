@@ -1,49 +1,64 @@
 package studentCoursesBackup.driver;
 
 import java.util.ArrayList;
-
+import java.io.FileNotFoundException;
 import studentCoursesBackup.util.TreeBuilder;
+import studentCoursesBackup.util.FileProcessor;
+import java.lang.Integer;
+import java.util.Arrays;
+import java.lang.String;
 
 public class Driver{
 
 
     public static void main(String[] args){
-    		 /*ArrayList<String> s = new ArrayList<String>();
-    		 s.add("S");
-    		 s.add("T");
-		    TreeBuilder tree = new TreeBuilder();
-		    tree.insert(1000, s);
-			 s.add("A");			 
-			 tree.insert(1002, s);
-			 tree.insert(999, s);
-			 tree.insert(1001, s);
-			 tree.insert(300, s);
-			 tree.print_tree();
-			 
-			 tree.delete(999);    
-    		 tree.print_tree();
-    		 tree.insert(301, s);
-    		 System.out.println("NM");
-    		 tree.print_tree();*/
-	
+
 		if (args.length != 5){
 			System.err.println("Invalid number of arguments");
+			System.exit(0);
 		} else {
-			try{
-				FileProcessor fileIn = new FileProcessor(args[0]);
-			} catch(FileNotFoundException e){
-				System.err.println("File does not exist");
+			String line;
+			FileProcessor inputFile;
+			FileProcessor deleteFile;
+			TreeBuilder treeOrig = new TreeBuilder();
+			inputFile = new FileProcessor(args[0]);
+
+			boolean readFlag = true;
+			while (readFlag){
+				line = inputFile.readLine();
+				if (line.equals("-1")){
+					readFlag = false;				
+				} else {
+					//Possible pattern exception here if input is wrong.
+					//Madhu said assume correct input.
+					String[] splitLine = line.split(":");
+					int bNum = Integer.parseInt(splitLine[0]);					
+					String course = splitLine[1];
+					treeOrig.insert(bNum, course);
+				}
+			}
+			treeOrig.print_tree();
+			inputFile.closeFile();
+			System.out.println();
+			deleteFile = new FileProcessor(args[1]);
+			readFlag = true;
+			while (readFlag){
+				line = deleteFile.readLine();
+				if (line.equals("-1")){
+					readFlag = false;
+				} else {
+					String[] splitLine = line.split(":");
+					int bNum = Integer.parseInt(splitLine[0]);					
+					String course = splitLine[1];
+					treeOrig.delete(bNum, course);
+									
+				}			
+			
 			}
 			
-			while (fileIn.readline() != "-1"){
-				
-			}
-
-
+			treeOrig.print_tree();
+			deleteFile.closeFile();
 		}
 
-
     }
-
-
 }

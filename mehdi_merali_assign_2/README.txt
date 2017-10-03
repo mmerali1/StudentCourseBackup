@@ -17,7 +17,7 @@ ant -buildfile src/build.xml run -Darg0=test2_input.txt -Darg1=test5_input.txt -
 -----------------------------------------------------------------------
 
 ## To create tarball for submission
-ant -buildfile src/build.xml tarzip or tar -zcvf mehdi_merali_assign_1.tar.gz mehdi_merali_assign_1
+ant -buildfile src/build.xml tarzip or tar -zcvf mehdi_merali_assign_2.tar.gz mehdi_merali_assign_2
 
 -----------------------------------------------------------------------
 

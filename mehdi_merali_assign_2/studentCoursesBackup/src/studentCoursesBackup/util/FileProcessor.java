@@ -13,14 +13,14 @@ public class FileProcessor {
 	private Scanner sc;
 
     //FileProcessor constuctor
-	public FileProcessor(String filename) throws FileNotFoundException{
+	public FileProcessor(String filename){
 		file = new File(filename);
-		//try{
+		try{
 			sc = new Scanner(file);
-		//} catch (FileNotFoundException e){
-		//	System.err.println("Exception thrown. File " + filename + " not found.");
-			//System.exit(0);
-		//} 
+		} catch (FileNotFoundException e){
+			System.err.println("Exception thrown. File " + filename + " not found.");
+			System.exit(0);
+		} 
 	
 	}
 
