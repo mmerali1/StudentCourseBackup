@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import studentCoursesBackup.util.TreeBuilder;
 import studentCoursesBackup.util.FileProcessor;
+import studentCoursesBackup.util.Results;
 import java.lang.Integer;
 import java.util.Arrays;
 import java.lang.String;
@@ -21,6 +22,7 @@ public class Driver{
 			FileProcessor inputFile;
 			FileProcessor deleteFile;
 			TreeBuilder treeOrig = new TreeBuilder();
+			Results res = new Results();
 			inputFile = new FileProcessor(args[0]);
 
 			boolean readFlag = true;
@@ -37,7 +39,8 @@ public class Driver{
 					treeOrig.insert(bNum, course);
 				}
 			}
-			treeOrig.print_tree();
+			treeOrig.printNodes(res);
+			res.writeToStdout();
 			inputFile.closeFile();
 			System.out.println();
 			deleteFile = new FileProcessor(args[1]);
@@ -56,7 +59,7 @@ public class Driver{
 			
 			}
 			
-			treeOrig.print_tree();
+			//System.out.println(treeOrig.printNodes(res));
 			deleteFile.closeFile();
 		}
 

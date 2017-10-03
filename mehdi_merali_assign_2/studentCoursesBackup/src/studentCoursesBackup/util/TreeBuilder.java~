@@ -3,7 +3,7 @@ package studentCoursesBackup.util;
 //adapted from http://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
 //used link for insert and search; delete and print was written by myself.
 import java.util.ArrayList;
-
+import studentCoursesBackup.util.Results;
 import studentCoursesBackup.myTree.Node;
 public class TreeBuilder{
 
@@ -37,7 +37,7 @@ public class TreeBuilder{
 	*	@returns Node instance
 	*/
 	public Node insert_recursive(Node rootIn, int bNumIn, String clsListIn){
-		if ((rootIn == null) || (rootIn.getBNumber == -1)){
+		if ((rootIn == null) || (rootIn.getBNumber() == -1)){
 			rootIn = new Node(bNumIn, clsListIn);
 			try{
 				rootIn.observerList[0] = rootIn.clone();
@@ -54,16 +54,18 @@ public class TreeBuilder{
 			rootIn = new Node(bNumIn, clsListIn);		
 			return rootIn;		
 		}*/
-		
+		if(bNumIn == rootIn.getBNumber()){
+			rootIn.add_class(clsListIn);
+			rootIn.observerList[0].add_class(clsListIn);
+			rootIn.observerList[1].add_class(clsListIn);
+		}
 		if (bNumIn < rootIn.getBNumber()){
 			rootIn.left = insert_recursive(rootIn.left, bNumIn, clsListIn);		
 		}
 		if(bNumIn > rootIn.getBNumber()){
 			rootIn.right = insert_recursive(rootIn.right, bNumIn, clsListIn);		
 		}
-		if(bNumIn == rootIn.getBNumber()){
-			rootIn.add_class(clsListIn);		
-		}
+	
 		//ADD CASE FOR DUPLICATE B-Numbers HERE
 		return rootIn;
 	}
@@ -100,15 +102,16 @@ public class TreeBuilder{
 			selectedNode.setBNumber(-1);
 			selectedNode.observerList[0] = null;
 			selectedNode.observerList[1] = null;		
-		}	
+		}
+		selectedNode.notifyAll(selectedNode);
 	}
 	
 	/**
 	* Calls function that recursively iterates through the tree and prints
 	*	each node's B-Number, course list, and observer list.
 	*/
-	public void print_tree(){
-			print_tree_rec(root);
+	public void printNodes(Results r){
+			print_tree_rec(root, r);
 	}
 	
 	/**
@@ -116,14 +119,13 @@ public class TreeBuilder{
 	*	each node's B-Number, course list, and observer list.
 	* @param rootIn Node that function is currently pointing to
 	*/
-	public void print_tree_rec(Node rootIn){
+	public void print_tree_rec(Node rootIn, Results r){
 		if (rootIn.left != null){
-			print_tree_rec(rootIn.left);		
+			print_tree_rec(rootIn.left, r);		
 		}
-	   System.out.println("Node:\t" + rootIn.getBNumber() + '\t' + rootIn.get_course_list());
-		rootIn.print_observer_list();
+		r.storeNewResult(("Node:\t" + rootIn.getBNumber() + '\t' + rootIn.get_course_list()));
 		if (rootIn.right!= null){
-			print_tree_rec(rootIn.right);		
-		}		
+			print_tree_rec(rootIn.right, r);		
+		}
 	}
 }

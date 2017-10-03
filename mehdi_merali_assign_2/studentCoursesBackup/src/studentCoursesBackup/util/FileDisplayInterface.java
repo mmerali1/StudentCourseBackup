@@ -3,6 +3,6 @@ package studentCoursesBackup.util;
 public interface FileDisplayInterface{
 
 	//method signatures
-	public void writeToFile();
+	public void writeToFile(String fileName);
 
 }

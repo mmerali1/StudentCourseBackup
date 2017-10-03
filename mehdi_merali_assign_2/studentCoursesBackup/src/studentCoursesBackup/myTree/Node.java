@@ -52,10 +52,16 @@ public class Node implements ObserverI , SubjectI, Cloneable{
     }
     
     /**
-    *	Adds class to courseNamesList for existing nodes
+    *	Adds class to courseNamesList for existing nodes if that class is not in arrayList
     */
     public void add_class(String classNameIn){
-		courseNamesList.add(classNameIn);    
+		if ((courseNamesList.contains(classNameIn)) == false){	
+			courseNamesList.add(classNameIn);
+			/*if (observerList[0] != null && observerList[1] != null){
+				observerList[0].courseNamesList.add(classNameIn);
+				observerList[1].courseNamesList.add(classNameIn);
+			} */   
+		}
     }
  
  	 /** 
@@ -79,7 +85,7 @@ public class Node implements ObserverI , SubjectI, Cloneable{
 	 *	Creates exact copies of nodes for backups
 	 *	@throws CloneNotSupportedException where node cannot be cloned
 	 *	@returns New instance of Node
-	 */    
+	 */
     public Node clone() throws CloneNotSupportedException{
     		Node newNode = new Node();
     		newNode.bNumber = bNumber;
@@ -90,10 +96,20 @@ public class Node implements ObserverI , SubjectI, Cloneable{
     }
     
 	//do i need params?
-	public void notifyAll(Node nodeIn){
-			
-	}
 	
+	public void notifyAll(Node nodeIn){
+		update(nodeIn);	
+	}
+
+
+	public void update(Node nodeIn){
+		try{
+			nodeIn.observerList[0] = nodeIn.clone();
+			nodeIn.observerList[1] = nodeIn.clone(); 
+		} catch (CloneNotSupportedException e){
+			System.err.println("Node could not be cloned in update()");		
+		}	
+	}
 	/**
 	*	Prints out BNumbers of the observer nodes
 	*/
