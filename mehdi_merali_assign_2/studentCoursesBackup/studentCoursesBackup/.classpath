@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" output="classes" path="src"/>
-	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
-	<classpathentry kind="con" path="/home/mmerali1/designpatterns/prg2/mehdi_merali_assign_2/studentCoursesBackup/src/BUILD/classes"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

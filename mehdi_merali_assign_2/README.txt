@@ -53,6 +53,15 @@ Its liner growth rate did not visually affect performance when I ran input-22.tx
 delete22.txt from mycourses which had 10000 nodes. It is possible that the runtime will
 deteriorate with higher input  
 
+Observer Pattern Implementation:
+-When delete is called, search for node specified
+			if node's courseNamesList has class, then delete the class
+			if node's courseNamesList is empty, then set nodes bnumber to -1
+			call NotifyAll on selected node
+-When notify all is called, call update on observer list nodes for original node
+-When update is called, if B-Number has changed, set observer B-Number to updated original node B-Number
+			clear all courses from observer node's course list
+			Iterate through original node course list and add each course to observer course list
 -----------------------------------------------------------------------
 
 Provide list of citations (urls, etc.) from where you have taken code
