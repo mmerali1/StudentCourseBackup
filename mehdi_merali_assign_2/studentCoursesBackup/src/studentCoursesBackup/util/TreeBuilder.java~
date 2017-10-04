@@ -29,7 +29,7 @@ public class TreeBuilder{
 	*/
 	public void insert(int bNumIn, String clsListIn, int cloneTotal){
 		//Node origNode = new Node();		
-		root = insert_recursive(root, bNumIn, clsListIn, cloneTotal/*, backup_Node_1, backup_Node_2*/);
+		root = insert_recursive(root, bNumIn, clsListIn);
 		backup_Node_1 = set_observer_tree(backup_Node_1, root, bNumIn, 0);
 		backup_Node_2 = set_observer_tree(backup_Node_1, root, bNumIn, 1);
 	}
@@ -51,6 +51,7 @@ public class TreeBuilder{
 				//System.out.println("\tObservers:\t + root.observerList[0].getBNumber() + '\t' + root.observerList[1].getBNumber());
 			} catch (CloneNotSupportedException | NullPointerException e){
 				System.err.println("Node could not be cloned. Clone() failed");
+				e.printStackTrace();
 				//System.exit(0);
 			}	
 		}if (bNumIn < orig.getBNumber()){
@@ -69,7 +70,7 @@ public class TreeBuilder{
 	*	@param clsListIn Course List which corresponds to a unique B-Number
 	*	@returns Node instance
 	*/
-	public Node insert_recursive(Node rootIn, int bNumIn, String clsListIn, int cloneTotal/*, Node backup1, Node backup2*/){
+	public Node insert_recursive(Node rootIn, int bNumIn, String clsListIn){
 		if ((rootIn == null) || (rootIn.getBNumber() == -1)){
 			rootIn = new Node(bNumIn, clsListIn);
 			return rootIn;
@@ -81,14 +82,12 @@ public class TreeBuilder{
 		}*/
 		if(bNumIn == rootIn.getBNumber()){
 			rootIn.add_class(clsListIn);
-		//	rootIn.observerList[0].add_class(clsListIn);
-		//	rootIn.observerList[1].add_class(clsListIn);
 		}
 		if (bNumIn < rootIn.getBNumber()){
-			rootIn.left = insert_recursive(rootIn.left, bNumIn, clsListIn, cloneTotal/*, backup1.left, backup2.left*/);		
+			rootIn.left = insert_recursive(rootIn.left, bNumIn, clsListIn);		
 		}
 		if(bNumIn > rootIn.getBNumber()){
-			rootIn.right = insert_recursive(rootIn.right, bNumIn, clsListIn, cloneTotal/*, backup1.right, backup2.right*/);		
+			rootIn.right = insert_recursive(rootIn.right, bNumIn, clsListIn);		
 		}
 	
 		//ADD CASE FOR DUPLICATE B-Numbers HERE

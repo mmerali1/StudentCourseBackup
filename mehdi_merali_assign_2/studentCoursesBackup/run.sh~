@@ -1,0 +1,4 @@
+ant -buildfile src/build.xml run -Darg0=testfiles/test1.txt -Darg1=testfiles/delete1.txt -Darg2=testfiles/t1out1.txt -Darg3=testfiles/t1out2.txt -Darg4=testfiles/t1out3.txt
+ant -buildfile src/build.xml run -Darg0=testfiles/test2.txt -Darg1=testfiles/delete2.txt -Darg2=testfiles/t2out1.txt -Darg3=testfiles/t2out2.txt -Darg4=testfiles/t2out3.txt
+ant -buildfile src/build.xml run -Darg0=testfiles/test3.txt -Darg1=testfiles/delete3.txt -Darg2=testfiles/t3out1.txt -Darg3=testfiles/t3out2.txt -Darg4=testfiles/t3out3.txt
+ant -buildfile src/build.xml run -Darg0=testfiles/test4.txt -Darg1=testfiles/delete4.txt -Darg2=testfiles/t4out1.txt -Darg3=testfiles/t4out2.txt -Darg4=testfiles/t4out3.txt
