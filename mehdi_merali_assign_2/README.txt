@@ -6,12 +6,14 @@ ant -buildfile src/build.xml clean
 
 -----------------------------------------------------------------------
 ## To compile: 
-cd mehdi_merali_assign_1/myArrayList
+cd mehdi_merali_assign_2/studentCoursesBackup
 ant -buildfile src/build.xml all
 
 -----------------------------------------------------------------------
 ## To run by specifying arguments from command line 
-ant -buildfile src/build.xml run -Darg0=test2_input.txt -Darg1=test5_input.txt -Darg2=test9_input.txt -Darg3=test10_input.txt -Darg4=test
+ant -buildfile src/build.xml run -Darg0=input.txt -Darg1=delete.txt -Darg2=out1.txt -Darg3=out2.txt -Darg4=out3.txt
+
+
 
 
 -----------------------------------------------------------------------
@@ -30,15 +32,17 @@ grade of 0 for the involved assignment for my first offense and that I
 will receive a grade of F for the course for any additional
 offense.”
 
-[Date: 10/2/2017]	Mehdi Merali
+[Date: 10/4/2017]	Mehdi Merali
 
 -----------------------------------------------------------------------
 
 Provide justification for Data Structures used in this assignment in
 term of Big O complexity (time and/or space)
 
+Used a linked list for building the tree. 
 
 -----------------------------------------------------------------------
 
 Provide list of citations (urls, etc.) from where you have taken code
 (if any).
+//adapted from http://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/

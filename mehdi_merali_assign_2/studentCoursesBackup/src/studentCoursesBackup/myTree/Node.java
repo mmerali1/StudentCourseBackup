@@ -34,6 +34,22 @@ public class Node implements ObserverI , SubjectI, Cloneable{
 		observerList[0] = null;
 		observerList[1] = null;
     }
+    /**
+    *	Constructor which is called in clone()
+    *	Does a deep copy of all data members in the Array
+	 * @param bNumIn bNumber to be set to private data member    
+    * @param listIn the course names list
+    *	@param leftIn left child node reference
+    * @param rightIn right child node pointer
+    */
+    public Node(int bNumIn, ArrayList<String> listIn, Node leftIn, Node rightIn){
+		bNumber = bNumIn;
+		courseNamesList = listIn;
+		left = leftIn;
+		right = rightIn;
+		observerList[0] = null;
+		observerList[1] = null;    
+    }
 
 	 /**
 	 *	Getter method to retrieve B-Number data member
@@ -86,34 +102,52 @@ public class Node implements ObserverI , SubjectI, Cloneable{
 	 *	@throws CloneNotSupportedException where node cannot be cloned
 	 *	@returns New instance of Node
 	 */
-    public Node clone() throws CloneNotSupportedException{
-    		Node newNode = new Node();
-    		newNode.bNumber = bNumber;
-    		newNode.courseNamesList = courseNamesList;
-    		newNode.left = left;
-    		newNode.right = right;
-    		return newNode;
+    public Object clone() throws CloneNotSupportedException{
+    		Node newNode = new Node(this.bNumber, this.courseNamesList, this.left, this.right);
+			return newNode;    
     }
     
-	//do i need params?
-	
+	/**
+	*	notifies all observers that a change has been made to the subject
+	*	@param nodeIn is the subject node
+	*/
 	public void notifyAll(Node nodeIn){
-		update(nodeIn);	
+		update(nodeIn, 0);
+		update(nodeIn, 1);	
 	}
 
+	/**
+	*	updates observers following being called from notifyAll()
+	*	@param nodeIn the subject node
+	*	@param obsID the observer being updated
+	*/
+	public void update(Node nodeIn, int obsID){
+		if (nodeIn != null && nodeIn.observerList[obsID] != null){		
+			if(nodeIn.bNumber != nodeIn.observerList[obsID].getBNumber()){
+				nodeIn.observerList[obsID].bNumber = nodeIn.bNumber;		
+			}
 
-	public void update(Node nodeIn){
-		try{
-			nodeIn.observerList[0] = nodeIn.clone();
-			nodeIn.observerList[1] = nodeIn.clone(); 
-		} catch (CloneNotSupportedException e){
-			System.err.println("Node could not be cloned in update()");		
-		}	
+			nodeIn.observerList[obsID].courseNamesList.clear();
+			for (int i=0; i<nodeIn.courseNamesList.size(); i++){
+				nodeIn.observerList[obsID].courseNamesList.add(nodeIn.courseNamesList.get(i));
+			}
+		}
 	}
+	
 	/**
 	*	Prints out BNumbers of the observer nodes
 	*/
 	public void print_observer_list(){
 		System.out.println("\tObservers:\t" + observerList[0].getBNumber() + '\t' + observerList[1].getBNumber());		
 	}
+
+	/**
+	*	sets observer list to a node
+	*	@param index used to index the observerList array
+	*	@param nodeIN is the node being set to the observerList array
+	*/	
+	public void setObserverList(int index, Node nodeIN){
+		observerList[index] = nodeIN;	
+	}
+	
 }

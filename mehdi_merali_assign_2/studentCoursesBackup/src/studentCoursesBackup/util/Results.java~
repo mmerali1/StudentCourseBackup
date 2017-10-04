@@ -29,6 +29,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 			for (int i=0; i<msgContainer.size(); i++){
 				wr.write(msgContainer.get(i) + "\n");		
 			}
+			wr.write("\n");
 		} catch (IOException e){
 			System.err.println("Failed to write to file");
 		} finally{
@@ -43,7 +44,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	
 	public void writeToStdout(){
 		for (int i=0; i<msgContainer.size(); i++){
-			System.out.println(msgContainer.get(i) + "\n");		
+			System.out.println(msgContainer.get(i));		
 		}	
 	}
 }
