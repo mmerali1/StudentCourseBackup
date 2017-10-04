@@ -34,12 +34,20 @@ public class TreeBuilder{
 		backup_Node_2 = set_observer_tree(backup_Node_1, root, bNumIn, 1);
 	}
 	
-	//Make sure implementation on this is correct. It is a little weird
+	/** 
+	*	Helper function for insert() which recursively adds a clone node to a 
+	*	backup tree
+	*	@param backup a backup node instance from the backup tree
+	*	@param orig an instance of the current node in the original tree
+	*	@param bNumIn B-Number for new node
+	*	@param obsID the observerList index number
+	*	@returns Node instance to the backup tree
+	*/
 	public Node set_observer_tree(Node backup, Node orig, int bNumIn, int obsID){
 		if (backup ==null){
 			try{
-				orig.setObserverList(0, (Node)orig.clone());
-				backup = orig.observerList[0];
+				orig.setObserverList(obsID, (Node)orig.clone());
+				backup = orig.observerList[obsID];
 				//System.out.println("\tObservers:\t + root.observerList[0].getBNumber() + '\t' + root.observerList[1].getBNumber());
 			} catch (CloneNotSupportedException | NullPointerException e){
 				System.err.println("Node could not be cloned. Clone() failed");
@@ -128,13 +136,16 @@ public class TreeBuilder{
 	
 	/**
 	* Calls function that recursively iterates through the tree and prints
-	*	each node's B-Number, course list, and observer list.
+	* each node's B-Number, course list, and observer list.
+	* @param res[] an array of Result instances
 	*/
 	public void printNodes(Results res[]){
 			print_tree_rec(root, res[0]);
+			res[0].storeNewResult("\n");
 			print_tree_rec(backup_Node_1, res[1]);
+			res[1].storeNewResult("\n");
 			print_tree_rec(backup_Node_2, res[2]);
-
+			res[2].storeNewResult("\n");	
 	}
 	
 	/**

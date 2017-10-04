@@ -8,7 +8,7 @@ public class Node implements ObserverI , SubjectI, Cloneable{
     private ArrayList<String> courseNamesList = new ArrayList<String>();
     public Node left;
     public Node right;
-	 public Node observerList[] = new Node[2];
+    public Node observerList[] = new Node[2];
 	 
 	 /**
 	 *	Empty constuctor for Node. Used primarily in the clone() function
@@ -84,14 +84,14 @@ public class Node implements ObserverI , SubjectI, Cloneable{
 	 *	Setter for B-Number
 	 * @param bNumIn the new B-Number for the node 	 
  	 */   
-    //May need error checking here
     public void setBNumber(int bNumIn){
-			bNumber = bNumIn;		
+	bNumber = bNumIn;		
     }
     
     /**
     *	Helper function for delete method that deletes course in
     * courseNamesList of all class names
+    * @param className string class name
     */
     public void delete_class(String className){
 		 	courseNamesList.remove(className);
@@ -100,11 +100,11 @@ public class Node implements ObserverI , SubjectI, Cloneable{
 	 /**
 	 *	Creates exact copies of nodes for backups
 	 *	@throws CloneNotSupportedException where node cannot be cloned
-	 *	@returns New instance of Node
+	 *	@returns New instance of Object which is later casted to a node
 	 */
     public Object clone() throws CloneNotSupportedException{
     		Node newNode = new Node(this.bNumber, this.courseNamesList, this.left, this.right);
-			return newNode;    
+		return newNode;    
     }
     
 	/**

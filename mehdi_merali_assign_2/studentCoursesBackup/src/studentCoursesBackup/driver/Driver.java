@@ -13,11 +13,23 @@ public class Driver{
 
 
     public static void main(String[] args){
-		System.out.print(args.length);
-		if (args.length != 5){
+    	//Checks that arguments are correct
+		boolean runFlag = true;		
+		String strTemp;		
+		for(int j=0; j<args.length; j++){
+			strTemp = args[j];			
+			if(strTemp.charAt(0) == '$'){
+				runFlag = false;
+				break;			
+			}
+		}
+		//Error message if runFlag set to false
+		if (runFlag == false){
 			System.err.println("Invalid number of arguments");
 			System.exit(0);
 		} else {
+			//Otherwise run program
+			//Declaration of instances and variables
 			String line;
 			FileProcessor inputFile;
 			FileProcessor deleteFile;
@@ -27,7 +39,8 @@ public class Driver{
 			resArr[1] = new Results();
 			resArr[2] = new Results();
 			inputFile = new FileProcessor(args[0]);
-
+			
+			//Reading in inputs from file and adding them to tree
 			boolean readFlag = true;
 			while (readFlag){
 				line = inputFile.readLine();
@@ -42,16 +55,14 @@ public class Driver{
 					treeOrig.insert(bNum, course,2);
 				}
 			}
+			//Write 3 trees to 3 result instances
 			treeOrig.printNodes(resArr);
-
-
-			
-			System.out.println();
-			//res1.writeToStdout();
+			//Close input file
 			inputFile.closeFile();
 			
-			System.out.println();
+			//Open delete file
 			deleteFile = new FileProcessor(args[1]);
+			//Read in delete file and delete specified nodes from tree
 			readFlag = true;
 			while (readFlag){
 				line = deleteFile.readLine();
@@ -62,18 +73,17 @@ public class Driver{
 					int bNum = Integer.parseInt(splitLine[0]);					
 					String course = splitLine[1];
 					treeOrig.delete(bNum, course);
-									
 				}			
-			
 			}
 			
+			//Write three trees to 3 result instances
 			treeOrig.printNodes(resArr);
-			//res1.writeToStdout();
 			deleteFile.closeFile();
 			
+			//Write Result instances to file
 			for (int i=0; i<3; i++){
 				resArr[i].writeToFile(args[i+2]);			
-			}			
+			}
 		}
     }
 }

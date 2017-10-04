@@ -8,11 +8,18 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
+/**
+ * FileProcessor is used to open, read, and close files from the directory
+ */
 public class FileProcessor {
 	private File file;
 	private Scanner sc;
 
-    //FileProcessor constuctor
+    /**
+     * Constructor takes in filename to open file
+     * @param filename the name of the file being opened
+     * @throws  FileNotFoundException if file cannot be found
+     */
 	public FileProcessor(String filename){
 		file = new File(filename);
 		try{

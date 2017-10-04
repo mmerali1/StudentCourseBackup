@@ -10,17 +10,31 @@ import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
 
-
+/**
+*	Class is used to store results and write them to either file or terminal	
+*/
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	
-	private ArrayList<String> msgContainer = new ArrayList<String>();
-	public Results(){}	
+	private ArrayList<String> msgContainer;
 	
+	/** 
+	*Constructor creates arraylist data member	
+	*/ 
+	public Results(){
+		msgContainer = new ArrayList<String>();	
+	}	
+	/**
+	*	Stores string into arraylist data member
+	*	@param message string that is being stored
+	*/
 	public void storeNewResult(String message){
 		msgContainer.add(message);
-		//System.out.println(msgContainer[index]);
 	}	
 	
+	/**
+	*	Writes String values in msgContainer data member to file
+	*	@param fileName the name of the file being written to
+	*/	
 	public void writeToFile(String fileName){
 		BufferedWriter wr = null;
 		try{
@@ -40,7 +54,9 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 		}
 	}
 	
-	
+	/**
+	*	Writing String values in msgContainer data member to stdout
+	*/	
 	public void writeToStdout(){
 		for (int i=0; i<msgContainer.size(); i++){
 			System.out.println(msgContainer.get(i));		
